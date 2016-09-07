@@ -15,14 +15,14 @@ class UrlFetcher:
             response = requests.get(url)
 
         except requests.ConnectionError:
-            dict_of_results = {'status_code': -1, 'err': equests.ConnectionError, 'url': url}
+            dict_of_results = {'status_code': -1, 'err': requests.ConnectionError, 'url': url}
         except requests.Timeout:
             dict_of_results = {'status_code': -1, 'err': requests.Timeout, 'url': url}
         except requests.TooManyRedirects:
             dict_of_results = {'status_code': -1, 'err': requests.TooManyRedirects, 'url': url}
         else:
             content = response.text
-            dict_of_results = {'status_code': response, 'url': url, 'content': 'content'}
+            dict_of_results = {'status_code': response, 'url': url, 'content': content}
        
         return dict_of_results
 
